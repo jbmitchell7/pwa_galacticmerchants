@@ -34,7 +34,7 @@ function Account() {
     return (
         <div>
             <h1>Account Info:</h1>
-            <p>Username: {userData.username}</p>
+            <p className='text-sky-400'>Username: {userData.username}</p>
             <p>Credits: {userData.credits}</p>
             <p>Ships: {userData.shipCount}</p>
         </div>

@@ -249,12 +249,9 @@ export interface StructureTransferResponse {
 export interface TokenResponse {
     token: string
     user: {
-        id: string
         username: string
-        picture: string
-        email: string
         credits: number
-        createdAt: string
-        updatedAt: string
+        ships: []
+        loans: []
     }
 }
