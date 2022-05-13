@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import usernameReducer from './reducers/usernameSlice';
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
         username: usernameReducer
     }
