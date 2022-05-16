@@ -10,7 +10,9 @@ import Navigation from './views/Navigation/Navigation';
 import App from './App';
 import Login from './views/Login/Login';
 import Account from './views/Account/Account';
+import Welcome from './views/Welcome/Welcome';
 import './index.css';
+import Dashboard from './views/Dashboard/Dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,6 +26,8 @@ root.render(
           <Route path='/navigation' element={<Navigation />} />
           <Route path='/login' element={<Login />} />
           <Route path='/account' element={<Account />} />
+          <Route path='/welcome' element={<Welcome />} />
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
       </Router>
     </Provider>

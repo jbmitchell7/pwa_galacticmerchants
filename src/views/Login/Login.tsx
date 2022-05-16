@@ -5,7 +5,7 @@ import { fetchGet, fetchPost } from '../../api/spacetraders';
 import { TokenResponse } from '../../data/types';
 import './Login.css';
 
-function Login() {
+const Login = () => {
     const [usernameInput, setUsernameInput] = useState('');
     const [tokenInput, setTokenInput] = useState('');
     let navigate = useNavigate();

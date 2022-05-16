@@ -5,8 +5,9 @@ import Login from './views/Login/Login';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Dashboard from './views/Dashboard/Dashboard';
 
-function App() {
+const App = () => {
     //const user = useAppSelector(state => state.username.value);
     const userToken = localStorage.getItem("TOKEN")
 
@@ -17,7 +18,7 @@ function App() {
     }
 
     return (
-        <Account />
+        <Dashboard />
     )
 
 }

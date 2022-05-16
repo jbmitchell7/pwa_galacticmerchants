@@ -5,7 +5,7 @@ import { User } from '../../data/types';
 import './Account.css';
 //import { setUsername } from '../../redux/reducers/usernameSlice';
 
-function Account() {
+const Account = () => {
     const [userData, setUserData] = useState({
         username: '',
         credits: 0,

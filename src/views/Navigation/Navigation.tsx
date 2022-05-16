@@ -3,7 +3,7 @@ import { fetchGet } from '../../api/spacetraders';
 import { LocationsResponse } from '../../data/types';
 import './Navigation.css';
 
-function Navigation() {
+const Navigation = () => {
     const [locations, setLocations] = useState([
         {
             allowsConstruction: false,
