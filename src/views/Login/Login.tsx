@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 import { fetchGet, fetchPost } from '../../api/spacetraders';
-import { TokenResponse, User } from '../../data/types';
+import { TokenResponse } from '../../data/types';
 import './Login.css';
 
 function Login() {
@@ -27,7 +27,7 @@ function Login() {
             navigate("/account")
         } catch {
             alert("Invalid Token");
-            localStorage.setItem("TOKEN", "");
+            localStorage.removeItem("TOKEN");
         }
     }
 
