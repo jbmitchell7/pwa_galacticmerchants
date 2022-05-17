@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
-//import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { fetchGet } from '../../api/spacetraders';
 import { User } from '../../data/types';
 import './Account.scss';
-//import { setUsername } from '../../redux/reducers/usernameSlice';
 
 const Account = () => {
     const [userData, setUserData] = useState({
@@ -27,7 +25,6 @@ const Account = () => {
         const response = await fetchGet("/my/account", {});
         const accountData: User = response.user
         setUserData(accountData);
-        //dispatch(setUsername(accountData.username));
     }
 
     const logout = () => {
@@ -48,7 +45,7 @@ const Account = () => {
             <p>Ships: {userData.shipCount}</p>
             <Button
                 onClick={() => logout()}
-                variant='custom'>
+                variant='danger'>
                 Logout
             </Button>
         </div>
