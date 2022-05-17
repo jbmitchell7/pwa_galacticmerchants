@@ -47,7 +47,8 @@ const Account = () => {
             <p>Credits: {userData.credits}</p>
             <p>Ships: {userData.shipCount}</p>
             <Button
-                onClick={() => logout()}>
+                onClick={() => logout()}
+                variant='custom'>
                 Logout
             </Button>
         </div>

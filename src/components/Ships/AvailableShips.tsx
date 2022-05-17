@@ -32,8 +32,8 @@ const AvailableShips = () => {
 
     return (
         <div>
-            {availableShips.map(ship => (
-                <div>
+            {availableShips.map((ship, index) => (
+                <div key={index}>
                     <p>Ship Class: {ship.class}</p>
                     <p>Type: {ship.type}</p>
                     <p>Manufacturer: {ship.manufacturer}</p>
