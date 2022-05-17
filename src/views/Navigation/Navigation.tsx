@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import { fetchGet } from '../../api/spacetraders';
 import { LocationsResponse } from '../../data/types';
 import './Navigation.css';
@@ -14,17 +16,23 @@ const Navigation = () => {
             y: 0,
             traits: ['']
         }
-    ])
+    ]);
+    const navigate = useNavigate();
+    const currSystem = "OE";
 
-    const currSystem = "OE"
     const getSystem = async () => {
-        localStorage.getItem("TOKEN")
+        const token = localStorage.getItem('TOKEN');
+        if (!token) {
+            navigate("/login");
+            return;
+        }
         const response: LocationsResponse = await fetchGet(`/systems/${currSystem}/locations`, {});
         setLocations(response.locations)
     }
 
     useEffect(() => {
         getSystem();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
