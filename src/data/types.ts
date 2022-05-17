@@ -18,6 +18,14 @@ export interface AvailableStructure {
     symbol: string
 }
 
+export interface AvailableLoan {
+    type: string
+    amount: number
+    rate: number
+    termInDays: number
+    collateralRequired: boolean
+}
+
 export interface Cargo {
     good: string
     quantity: number
@@ -44,14 +52,12 @@ export interface FlightPlan {
 }
 
 export interface Loan {
-    type: LoanType
+    type: string
     repaymentAamount: number
     id: string
     status: string
     due: string
 }
-
-export type LoanType = 'STARTUP'
 
 export interface Location extends Coordinates {
     name: string
@@ -119,7 +125,7 @@ export interface YourLoan {
     id: string
     repaymentAmount: boolean
     status: string
-    type: LoanType
+    type: string
 }
 
 export interface YourShip extends Coordinates {
@@ -144,7 +150,7 @@ export interface AccountResponse {
 }
 
 export interface AvailableLoanResponse {
-    loans: Loan[]
+    loans: AvailableLoan[]
 }
 
 export interface AvailableShipResponse {
@@ -218,7 +224,7 @@ export interface ShipResponse {
 }
 
 export interface ShipsResponse {
-    ships: (YourShip & { flightPlanId?: string })[]
+    ships: YourShip[]
 }
 
 export interface ShipTransferResponse {

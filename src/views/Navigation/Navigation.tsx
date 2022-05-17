@@ -1,24 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from '../../redux/hooks';
 
 import { fetchGet } from '../../api/spacetraders';
-import { LocationsResponse } from '../../data/types';
+import { Location, LocationsResponse } from '../../data/types';
 import './Navigation.css';
 
 const Navigation = () => {
-    const [locations, setLocations] = useState([
-        {
-            allowsConstruction: false,
-            name: '',
-            symbol: '',
-            type: '',
-            x: 0,
-            y: 0,
-            traits: ['']
-        }
-    ]);
+    const [locations, setLocations] = useState<Location[]>([]);
+    const currSystem = useAppSelector(state => state.currSystem.value);
     const navigate = useNavigate();
-    const currSystem = "OE";
 
     const getSystem = async () => {
         const token = localStorage.getItem('TOKEN');
