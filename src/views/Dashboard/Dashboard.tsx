@@ -20,13 +20,19 @@ const Dashboard = () => {
     return (
         <div>
             <h3>Welcome to Your Dashboard</h3>
-            <Button onClick={() => setView("loans")}>
+            <Button
+                onClick={() => setView("loans")}
+                variant="secondary">
                 View Available Loans
             </Button>
-            <Button onClick={() => setView("available-ships")}>
+            <Button
+                onClick={() => setView("available-ships")}
+                variant="secondary">
                 View Available Ships
             </Button>
-            <Button onClick={() => setView("my-ships")}>
+            <Button
+                onClick={() => setView("my-ships")}
+                variant="secondary">
                 View My Ships
             </Button>
             {(view === "loans") ? <Loans /> :
