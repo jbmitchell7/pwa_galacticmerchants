@@ -32,15 +32,32 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <Form>
-                <Form.Control type='text' placeholder='Username' onChange={e => setUsernameInput(e.target.value)} />
+        <div className='login-container'>
+            <Form className='login-form'>
+                <Form.Text className='form-header'>
+                    Welcome to Galactic Merchants
+                </Form.Text><br /><br />
+                <Form.Text className='form-instructions'>
+                    If you would like to start a new game enter a username to claim below
+                </Form.Text>
+                <Form.Control
+                    type='text'
+                    placeholder='Username'
+                    onChange={e => setUsernameInput(e.target.value)} />
                 <Button
+                    className='login-btn'
                     onClick={() => claimUsername(usernameInput)}>
                     Claim Username
-                </Button>
-                <Form.Control type='password' placeholder='Token' onChange={e => setTokenInput(e.target.value)} />
+                </Button><br />
+                <Form.Text className='form-instructions'>
+                    If you have already claimed a username and have your login token, enter it below
+                </Form.Text>
+                <Form.Control
+                    type='password'
+                    placeholder='Token'
+                    onChange={e => setTokenInput(e.target.value)} />
                 <Button
+                    className='login-btn'
                     onClick={() => setLoginToken(tokenInput)}>
                     Login with Token
                 </Button>

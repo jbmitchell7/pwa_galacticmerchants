@@ -1,0 +1,38 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    width: 40vw;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+@media (max-width: 1400px) {
+    .login-form {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .login-form {
+        width: 80vw;
+        padding: 20px;
+    }
+}
+
+.form-header {
+    font-size: x-large;
+    color: black;
+}
+
+.form-instructions {
+    color: black;
+}
+
+.login-btn {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
