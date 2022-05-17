@@ -1,35 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
+import { Container } from 'react-bootstrap';
 
 import { store } from './redux/store';
-import Navigation from './views/Navigation/Navigation';
 import App from './App';
-import Login from './views/Login/Login';
-import Account from './views/Account/Account';
-import Welcome from './views/Welcome/Welcome';
 import './index.css';
-import Dashboard from './views/Dashboard/Dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route path='/' element={<App />} />
-          <Route path='/navigation' element={<Navigation />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/account' element={<Account />} />
-          <Route path='/welcome' element={<Welcome />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-        </Routes>
-      </Router>
+      <Container fluid className='app-body'>
+        <App />
+      </Container>
     </Provider>
   </React.StrictMode>
 );
