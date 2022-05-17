@@ -8,7 +8,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import Welcome from './views/Welcome/Welcome';
 import Account from './views/Account/Account';
 import Navigation from './views/Navigation/Navigation';
-import './App.css';
+import './App.scss';
 
 const App = () => {
     const userToken = localStorage.getItem("TOKEN")

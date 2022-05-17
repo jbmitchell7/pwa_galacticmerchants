@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 //import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { fetchGet } from '../../api/spacetraders';
 import { User } from '../../data/types';
-import './Account.css';
+import './Account.scss';
 //import { setUsername } from '../../redux/reducers/usernameSlice';
 
 const Account = () => {
@@ -16,13 +16,17 @@ const Account = () => {
         joinedAt: ''
     });
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const getAccount = async () => {
-        localStorage.setItem("TOKEN", '2ec321da-0367-45a5-98a7-09aaf539137e')
+        const token = localStorage.getItem('TOKEN');
+        if (!token) {
+            navigate("/login");
+            return
+        }
         const response = await fetchGet("/my/account", {});
         const accountData: User = response.user
-        setUserData(accountData)
+        setUserData(accountData);
         //dispatch(setUsername(accountData.username));
     }
 
@@ -33,6 +37,7 @@ const Account = () => {
 
     useEffect(() => {
         getAccount();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

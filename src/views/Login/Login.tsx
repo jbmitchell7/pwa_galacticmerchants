@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 import { fetchGet, fetchPost } from '../../api/spacetraders';
 import { TokenResponse } from '../../data/types';
-import './Login.css';
+import './Login.scss';
 
 const Login = () => {
     const [usernameInput, setUsernameInput] = useState('');
