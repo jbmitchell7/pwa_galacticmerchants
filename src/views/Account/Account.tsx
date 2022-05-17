@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 //import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { fetchGet } from '../../api/spacetraders';
 import { User } from '../../data/types';
@@ -14,10 +16,7 @@ const Account = () => {
         joinedAt: ''
     });
 
-    //const user = useAppSelector(state => state.username.value);
-    //const dispatch = useAppDispatch();
-
-    //spaceTraders.init('jakem', '2ec321da-0367-45a5-98a7-09aaf539137e')
+    let navigate = useNavigate();
 
     const getAccount = async () => {
         localStorage.setItem("TOKEN", '2ec321da-0367-45a5-98a7-09aaf539137e')
@@ -25,6 +24,11 @@ const Account = () => {
         const accountData: User = response.user
         setUserData(accountData)
         //dispatch(setUsername(accountData.username));
+    }
+
+    const logout = () => {
+        localStorage.removeItem("TOKEN");
+        navigate("/login");
     }
 
     useEffect(() => {
@@ -37,6 +41,10 @@ const Account = () => {
             <p className='text-sky-400'>Username: {userData.username}</p>
             <p>Credits: {userData.credits}</p>
             <p>Ships: {userData.shipCount}</p>
+            <Button
+                onClick={() => logout()}>
+                Logout
+            </Button>
         </div>
     );
 }

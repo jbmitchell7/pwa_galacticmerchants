@@ -24,7 +24,7 @@ const Login = () => {
         try {
             localStorage.setItem("TOKEN", token);
             await fetchGet("/my/account", {});
-            navigate("/account")
+            navigate("/account");
         } catch {
             alert("Invalid Token");
             localStorage.removeItem("TOKEN");
