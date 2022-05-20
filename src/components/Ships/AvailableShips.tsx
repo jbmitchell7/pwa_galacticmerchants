@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { Card } from "react-bootstrap";
 
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchGet } from "../../api/spacetraders";
 import { setLoading } from "../../redux/reducers/loadingSlice";
 import { AvailableShipResponse, Ship } from "../../data/types";
@@ -33,12 +34,12 @@ const AvailableShips = () => {
     return (
         <div>
             {availableShips.map((ship, index) => (
-                <div key={index}>
-                    <p>Ship Class: {ship.class}</p>
-                    <p>Type: {ship.type}</p>
-                    <p>Manufacturer: {ship.manufacturer}</p>
-                    <p>Plating: {ship.plating}</p>
-                </div>
+                <Card key={index} className='ship-card'>
+                    <Card.Title>Type: {ship.type}</Card.Title>
+                    <Card.Text>Ship Class: {ship.class}</Card.Text>
+                    <Card.Text>Manufacturer: {ship.manufacturer}</Card.Text>
+                    <Card.Text>Plating: {ship.plating}</Card.Text>
+                </Card>
             ))}
         </div>
     )
