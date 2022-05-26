@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Container, Card, Col, Row, Button } from "react-bootstrap";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchGet } from "../../api/spacetraders";
+import { fetchGet, fetchPost } from "../../api/spacetraders";
 import { setLoading } from "../../redux/reducers/loadingSlice";
-import { AvailableShipResponse, Ship } from "../../data/types";
+import { AvailableShipResponse, PurchaseResponse, Ship } from "../../data/types";
 
 const AvailableShips = () => {
     const dispatch = useAppDispatch();
@@ -25,6 +25,14 @@ const AvailableShips = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const purchaseShip = async (shipType: string) => {
+        const res: PurchaseResponse = await fetchPost(`/my/ships`, {
+            location: currSystem,
+            type: shipType
+        });
+        console.log(res);
+    }
+
     if (loadingStatus) {
         return (
             <div>Loading...</div>
@@ -32,16 +40,26 @@ const AvailableShips = () => {
     }
 
     return (
-        <div>
-            {availableShips.map((ship, index) => (
-                <Card key={index} className='ship-card'>
-                    <Card.Title>Type: {ship.type}</Card.Title>
-                    <Card.Text>Ship Class: {ship.class}</Card.Text>
-                    <Card.Text>Manufacturer: {ship.manufacturer}</Card.Text>
-                    <Card.Text>Plating: {ship.plating}</Card.Text>
-                </Card>
-            ))}
-        </div>
+        <Container>
+            <Row>
+                {availableShips.map((ship, index) => (
+                    <Col key={index} xl={3} lg={4} md={6}>
+                        <Card bg='dark' className="ship-card">
+                            <Card.Title className='ship-text'>Type: {ship.type}</Card.Title>
+                            <Card.Text className='ship-text'>Ship Class: {ship.class}</Card.Text>
+                            <Card.Text className='ship-text'>Manufacturer: {ship.manufacturer}</Card.Text>
+                            <Card.Text className='ship-text'>Plating: {ship.plating}</Card.Text>
+                            <Button
+                                variant='primary'
+                                onClick={() => purchaseShip(ship.type)}>
+                                Buy Ship
+                            </Button>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+
+        </Container>
     )
 }
 
